@@ -105,7 +105,7 @@ def tokenize_text(text: str, remove_stopwords: bool = False) -> List[str]:
 
 
 def parse_newsgroups(
-    data_dir: str = '../data/20NG',
+    data_dir: str = './data/20NG',
     categories: List[str] = None,
     clean_text: bool = False,
     remove_stopwords: bool = False,
