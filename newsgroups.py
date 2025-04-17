@@ -54,12 +54,10 @@ from os.path import join
 import random
 from typing import List, Union, Tuple, Dict, Optional
 
-# Import NLTK dependencies
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-# Download required NLTK resources if not available
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
@@ -78,47 +76,22 @@ except ImportError:
 
 
 def clean_text(text: str, remove_stopwords: bool = False) -> str:
-    """
-    Clean and preprocess text.
-    
-    Args:
-        text: Input text
-        remove_stopwords: Whether to remove stop words
-        
-    Returns:
-        Cleaned text
-    """
-    # Remove headers (common in newsgroup data)
     text = re.sub(r'From:.*?\n', '', text)
     text = re.sub(r'Subject:.*?\n', '', text)
-    
-    # Replace newlines and special characters
+
     text = re.sub(r'[\n\r]', ' ', text)
     text = re.sub(r'[^\w\s]', '', text)
-    
-    # Tokenize
+
     tokens = word_tokenize(text.lower())
-    
-    # Remove stop words if requested
+
     if remove_stopwords:
         stop_words = set(stopwords.words('english'))
         tokens = [word for word in tokens if word not in stop_words]
-    
-    # Join tokens back into a string
+
     return ' '.join(tokens)
 
 
 def tokenize_text(text: str, remove_stopwords: bool = False) -> List[str]:
-    """
-    Tokenize text into words.
-    
-    Args:
-        text: Input text
-        remove_stopwords: Whether to remove stop words
-        
-    Returns:
-        List of tokens
-    """
     text = re.sub(r'From:.*?\n', '', text)
     text = re.sub(r'Subject:.*?\n', '', text)
     
