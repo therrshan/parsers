@@ -137,18 +137,18 @@ def parse_mnist(
 
     if data_dir is None:
         if dataset.lower() in ['mnist', 'mnistdigit', 'digit', 'digits']:
-            data_dir = './data/MNIST'
+            data_dir = 'data/MNIST'
             dataset = 'mnist'
         elif dataset.lower() in ['fashion', 'fashion_mnist', 'fashion-mnist', 'fashionmnist']:
-            data_dir = './data/FashionMNIST'
+            data_dir = 'data/FashionMNIST'
             dataset = 'fashion'
         else:
             raise ValueError(f"Unknown dataset: {dataset}. Choose 'mnist' or 'fashion'.")
 
-    train_image_path = join(data_dir, 'train-images-idx3-ubyte')
-    train_labels_path = join(data_dir, 'train-labels-idx1-ubyte')
-    test_image_path = join(data_dir, 't10k-images-idx3-ubyte')
-    test_labels_path = join(data_dir, 't10k-labels-idx1-ubyte')
+    train_image_path = join(data_dir, 'train-images.idx3-ubyte')
+    train_labels_path = join(data_dir, 'train-labels.idx1-ubyte')
+    test_image_path = join(data_dir, 't10k-images.idx3-ubyte')
+    test_labels_path = join(data_dir, 't10k-labels.idx1-ubyte')
 
     with open(train_image_path, 'rb') as file: 
         image_train = np.frombuffer(file.read(), dtype=np.uint8)
