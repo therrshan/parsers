@@ -137,10 +137,10 @@ def parse_mnist(
 
     if data_dir is None:
         if dataset.lower() in ['mnist', 'mnistdigit', 'digit', 'digits']:
-            data_dir = '../data/MNIST'
+            data_dir = './data/MNIST'
             dataset = 'mnist'
         elif dataset.lower() in ['fashion', 'fashion_mnist', 'fashion-mnist', 'fashionmnist']:
-            data_dir = '../data/FashionMNIST'
+            data_dir = './data/FashionMNIST'
             dataset = 'fashion'
         else:
             raise ValueError(f"Unknown dataset: {dataset}. Choose 'mnist' or 'fashion'.")
