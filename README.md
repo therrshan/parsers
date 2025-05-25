@@ -24,17 +24,20 @@ from datasetloader.mnist import MNISTLoader
 from datasetloader.fashion_mnist import FashionMNISTLoader
 from datasetloader.newsgroups import TwentyNewsLoader
 
-# Load MNIST dataset
-mnist = MNISTLoader()
-X_train, y_train, X_test, y_test = mnist.load(normalize=True)
+# MNIST
+mnist = MNISTLoader(normalize=True, as_dataframe=True)
+X, y = mnist.load("train")
+print("MNIST:", X.shape, y.shape)
 
-# Load Fashion MNIST as pandas DataFrame
-fashion = FashionMNISTLoader()
-df_train, df_test = fashion.load(format='pandas')
+# Fashion MNIST
+fashion = FashionMNISTLoader(normalize=True, as_dataframe=False)
+Xf, yf = fashion.load("test")
+print("Fashion MNIST:", Xf.shape, yf.shape)
 
-# Load 20 Newsgroups dataset
-news = TwentyNewsLoader()
-X_train, y_train = news.load(subset='train')
+# 20NG
+news = TwentyNewsLoader(as_dataframe=True)
+Xn, yn = news.load("train")
+print("20NG:", Xn.shape, yn.shape)
 ```
 
 ## Supported Datasets (More coming soon)
